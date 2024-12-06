@@ -13,7 +13,7 @@ function App() {
 
       </header>
       <main className="Layout">
-        <Pokedex />
+        <Pokedex  />
       </main>
     </div>
   );

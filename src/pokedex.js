@@ -1,16 +1,28 @@
-import React from "react"
+import React, { useState, useEffect } from 'react';
 import './App.css'
 
+import PokemonDetails from './PokemonDetails';
+
 export default function Pokedex() {
+    const [name, setName] = useState("");
+    const [pokemonDetailId, setPokemonDetailId] = useState(1);
+
     const handleSubmit = (event) => {
         event.preventDefault();
-      };
+        console.log(event.target);
+
+        const formData = new FormData(event.target);
+        console.log(formData);
+        setPokemonDetailId(name);
+    };
 
     return (
         <form onSubmit={handleSubmit}>
             <div>
                 <label>
-                    <input type="text" />
+                    <input type="text" value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
                 </label>
             </div>
             <div>
@@ -22,6 +34,8 @@ export default function Pokedex() {
                     </textarea>
                 </label>
             </div>
+            <PokemonDetails passedValue={pokemonDetailId} />
         </form>
+
     )
-  }
+}
